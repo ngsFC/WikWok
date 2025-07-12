@@ -7,21 +7,30 @@ Probability theory provides the mathematical foundation for statistical inferenc
 ### Definition of Probability
 Probability measures the likelihood of an event occurring, expressed as a number between 0 and 1.
 
-**Interpretations**:
-1. **Classical**: P(A) = (Number of favorable outcomes) / (Total number of possible outcomes)
-2. **Frequentist**: Long-run relative frequency of an event
-3. **Subjective**: Personal degree of belief about an event
+**Interpretations of Probability:**
+
+| Interpretation | Definition | Example | When to Use |
+|----------------|------------|---------|-------------|
+| **Classical** | P(A) = Favorable outcomes / Total outcomes | Fair coin: P(Heads) = 1/2 | Equally likely outcomes |
+| **Frequentist** | Long-run relative frequency | Gene mutation rate from large studies | Repeatable experiments |
+| **Subjective** | Personal degree of belief | Expert opinion on treatment success | Unique situations, prior knowledge |
 
 ### Sample Space and Events
-- **Sample Space (Ω)**: Set of all possible outcomes
-- **Event**: Subset of the sample space
-- **Elementary Event**: Single outcome
-- **Compound Event**: Collection of elementary events
 
-**Example**: Rolling a die
-- Sample space: Ω = {1, 2, 3, 4, 5, 6}
-- Event A = "even number": {2, 4, 6}
-- P(A) = 3/6 = 0.5
+| Term | Symbol | Definition | Example (Rolling a die) |
+|------|--------|------------|------------------------|
+| **Sample Space** | Ω | Set of all possible outcomes | Ω = {1, 2, 3, 4, 5, 6} |
+| **Event** | A, B, C | Subset of sample space | A = "even" = {2, 4, 6} |
+| **Elementary Event** | ω | Single outcome | ω = "rolling a 3" |
+| **Compound Event** | | Collection of elementary events | B = "greater than 4" = {5, 6} |
+
+**Visual Representation:**
+```
+Sample Space Ω: { 1   2   3   4   5   6 }
+                     │   ●   │   ●   │   ●   Event A (even)
+                     └───────────────────┘
+                   A = {2, 4, 6}, P(A) = 3/6 = 0.5
+```
 
 ## Probability Rules and Axioms
 

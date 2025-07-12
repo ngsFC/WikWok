@@ -14,12 +14,31 @@ Where:
 - β₁: Slope (change in Y per unit change in X)
 - ε: Error term (residuals)
 
-### Assumptions
-1. **Linearity**: Relationship between X and Y is linear
-2. **Independence**: Observations are independent
-3. **Homoscedasticity**: Constant variance of residuals
-4. **Normality**: Residuals are normally distributed
-5. **No outliers**: Extreme values don't unduly influence the model
+### Assumptions (LINE)
+
+| Assumption | Description | How to Check | Violation Consequence |
+|------------|-------------|--------------|----------------------|
+| **L**inearity | Relationship between X and Y is linear | Scatterplot, residual plots | Biased estimates |
+| **I**ndependence | Observations are independent | Study design, Durbin-Watson test | Invalid standard errors |
+| **N**ormality | Residuals are normally distributed | Q-Q plot, Shapiro-Wilk test | Invalid inference (small samples) |
+| **E**qual variance | Constant variance of residuals | Residual vs fitted plot | Invalid standard errors |
+
+**Additional Concerns:**
+- **No outliers**: Extreme values don't unduly influence the model
+- **No multicollinearity**: Predictors not highly correlated (multiple regression)
+
+**Visual Diagnostics:**
+```
+Good Residual Plot:        Bad Residual Plot:
+    •                         •     •
+  •   •                    •         •
+•       •                •             •
+  •   •                    •         •
+    •                         •     •
+──────────                ──────────
+Random scatter             Funnel pattern
+                          (heteroscedasticity)
+```
 
 ### Parameter Estimation (Least Squares)
 

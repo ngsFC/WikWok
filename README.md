@@ -14,6 +14,9 @@ A comprehensive wiki covering statistics from fundamentals through advanced appl
 5. **[Regression Analysis](05-regression-analysis.md)** - Linear, multiple, and logistic regression with diagnostics
 6. **[Advanced Regression](06-advanced-regression.md)** - Regularized methods (Ridge, Lasso, Elastic Net), polynomial regression, and modern techniques
 
+### Bayesian Methods
+7. **[Bayesian Statistics](09-bayesian-statistics.md)** - Bayesian inference, MCMC methods, hierarchical models, and applications in bioinformatics
+
 ### Graph Theory and Networks
-7. **[Graph Theory](07-graph-theory.md)** - Fundamental concepts, algorithms, and network analysis methods
-8. **[Bioinformatics Applications](08-bioinformatics-applications.md)** - Real-world applications of statistics and graph theory in biological research
+8. **[Graph Theory](07-graph-theory.md)** - Fundamental concepts, algorithms, and network analysis methods
+9. **[Bioinformatics Applications](08-bioinformatics-applications.md)** - Real-world applications of statistics and graph theory in biological research

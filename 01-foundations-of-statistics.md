@@ -23,13 +23,29 @@ Statistics is the science of collecting, organizing, analyzing, interpreting, an
 ### Types of Variables
 
 #### By Nature
-- **Quantitative (Numerical)**: 
-  - Continuous: Can take any value within a range (height, weight, temperature)
-  - Discrete: Countable values (number of children, number of mutations)
 
-- **Qualitative (Categorical)**:
-  - Nominal: No natural order (blood type, species, treatment group)
-  - Ordinal: Natural order exists (disease severity: mild, moderate, severe)
+| Variable Type | Subtype | Description | Examples |
+|---------------|---------|-------------|---------|
+| **Quantitative (Numerical)** | Continuous | Can take any value within a range | Height, weight, temperature, gene expression levels |
+| | Discrete | Countable values | Number of children, mutations, SNPs |
+| **Qualitative (Categorical)** | Nominal | No natural order | Blood type (A,B,AB,O), species, treatment group |
+| | Ordinal | Natural order exists | Disease severity (mild, moderate, severe), tumor stage |
+
+```
+Variable Classification Tree:
+
+Variable
+├── Quantitative (Numerical)
+│   ├── Discrete (countable)
+│   │   └── Examples: # of mutations, # of genes
+│   └── Continuous (measurable) 
+│       └── Examples: expression level, protein concentration
+└── Qualitative (Categorical)
+    ├── Nominal (no order)
+    │   └── Examples: genotype, tissue type
+    └── Ordinal (ordered)
+        └── Examples: cancer stage, pain scale
+```
 
 #### By Role in Analysis
 - **Independent Variable**: The predictor or explanatory variable
@@ -37,10 +53,20 @@ Statistics is the science of collecting, organizing, analyzing, interpreting, an
 
 ### Scales of Measurement
 
-1. **Nominal**: Categories without order (A, B, AB, O blood types)
-2. **Ordinal**: Categories with order (low, medium, high expression)
-3. **Interval**: Equal intervals, no true zero (temperature in Celsius)
-4. **Ratio**: Equal intervals with true zero (age, concentration, counts)
+| Scale | Properties | Mathematical Operations | Examples |
+|-------|-----------|------------------------|----------|
+| **Nominal** | Categories, no order | = , ≠ | Blood type (A,B,AB,O), genotype (AA,Aa,aa) |
+| **Ordinal** | Categories with order | = , ≠ , < , > | Pain scale (1-10), tumor grade (I,II,III,IV) |
+| **Interval** | Equal intervals, no true zero | +, -, =, ≠, <, > | Temperature (°C), standardized test scores |
+| **Ratio** | Equal intervals, true zero | ×, ÷, +, -, =, ≠, <, > | Age, height, gene expression, concentration |
+
+**Visual Representation:**
+```
+Nominal:    [A] [B] [AB] [O]           (categories only)
+Ordinal:    [Low] < [Med] < [High]      (order matters)
+Interval:   |----20°C----30°C----40°C|  (equal intervals)
+Ratio:      0kg---10kg---20kg---30kg   (true zero point)
+```
 
 ## Data Collection Methods
 
@@ -52,24 +78,54 @@ Statistics is the science of collecting, organizing, analyzing, interpreting, an
 - **Case-control**: Comparing cases with disease to controls without
 
 ### Sampling Methods
-- **Simple Random Sampling**: Each individual has equal probability of selection
-- **Stratified Sampling**: Population divided into strata, sample from each
-- **Systematic Sampling**: Every nth individual selected
-- **Cluster Sampling**: Groups (clusters) randomly selected
-- **Convenience Sampling**: Non-random, based on availability
+
+| Method | Description | Advantages | Disadvantages | Best Used When |
+|--------|-------------|------------|---------------|----------------|
+| **Simple Random** | Each individual has equal probability | Unbiased, easy to analyze | May miss important subgroups | Population is homogeneous |
+| **Stratified** | Population divided into strata, sample from each | Ensures representation | Requires knowledge of strata | Distinct subgroups exist |
+| **Systematic** | Every nth individual selected | Simple to implement | Bias if pattern in population | Sampling frame is available |
+| **Cluster** | Groups (clusters) randomly selected | Cost-effective for dispersed populations | Higher sampling error | Natural clusters exist |
+| **Convenience** | Non-random, based on availability | Quick and inexpensive | High bias potential | Exploratory studies only |
+
+**Sampling Illustration:**
+```
+Population: [●●●●●●●●●●●●●●●●●●●●] (20 individuals)
+
+Simple Random:     [●○●○○●○●○●○○●○●○○●○●]
+Stratified:        Stratum A [●○●○●] Stratum B [○●○●○] 
+Systematic (n=5):  [●○○○○●○○○○●○○○○●○○○○]
+Cluster:           Cluster 1 [●●●●●] Cluster 3 [●●●●●]
+```
 
 ## Common Statistical Distributions
 
 ### Discrete Distributions
-- **Binomial**: Number of successes in n trials
-- **Poisson**: Number of events in fixed time/space
-- **Geometric**: Number of trials until first success
+
+| Distribution | Parameters | Mean | Variance | Use Cases |
+|--------------|------------|------|----------|----------|
+| **Binomial** | n (trials), p (success prob) | np | np(1-p) | SNP calling, mutation counting |
+| **Poisson** | λ (rate) | λ | λ | Gene expression counts, variant calls |
+| **Geometric** | p (success prob) | 1/p | (1-p)/p² | Time to first success |
+| **Negative Binomial** | r, p | r(1-p)/p | r(1-p)/p² | Overdispersed count data |
 
 ### Continuous Distributions
-- **Normal (Gaussian)**: Bell-shaped, symmetric
-- **Student's t**: Similar to normal but heavier tails
-- **Chi-square**: Used in goodness-of-fit tests
-- **F-distribution**: Used in ANOVA and regression
+
+| Distribution | Parameters | Mean | Variance | Shape | Use Cases |
+|--------------|------------|------|----------|-------|----------|
+| **Normal** | μ (mean), σ² (variance) | μ | σ² | Bell-shaped, symmetric | Gene expression, measurement error |
+| **Student's t** | ν (degrees of freedom) | 0 (if ν>1) | ν/(ν-2) | Bell-shaped, heavy tails | Small sample inference |
+| **Chi-square** | ν (degrees of freedom) | ν | 2ν | Right-skewed | Goodness-of-fit, variance tests |
+| **F** | ν₁, ν₂ (degrees of freedom) | ν₂/(ν₂-2) | Complex | Right-skewed | ANOVA, regression F-tests |
+| **Beta** | α, β (shape parameters) | α/(α+β) | αβ/[(α+β)²(α+β+1)] | Flexible [0,1] | Proportions, Bayesian priors |
+
+**Distribution Shapes:**
+```
+Normal:       /‾‾‾‾‾‾‾‾‾‾‾‾‾\        (symmetric bell)
+t-distribution: /‾‾‾‾‾‾‾‾‾‾‾‾‾\      (heavier tails)
+Chi-square:   /‾‾‾‾‾‾‾‾\___        (right-skewed)
+F:            /‾‾‾‾‾‾\____         (right-skewed)
+Beta:         Variable shapes depending on α,β
+```
 
 ## Central Limit Theorem
 

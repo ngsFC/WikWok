@@ -34,10 +34,27 @@ A 95% confidence interval means that if we repeated the sampling process many ti
 #### When σ is Known (Z-interval)
 **X̄ ± z_(α/2) × (σ/√n)**
 
-**Common z-values**:
-- 90% CI: z = 1.645
-- 95% CI: z = 1.96
-- 99% CI: z = 2.576
+**Common Critical Values:**
+
+| Confidence Level | α | α/2 | z-value | t-value (df=10) | t-value (df=30) |
+|------------------|---|-----|---------|-----------------|------------------|
+| 90% | 0.10 | 0.05 | 1.645 | 1.812 | 1.697 |
+| 95% | 0.05 | 0.025 | 1.96 | 2.228 | 2.042 |
+| 99% | 0.01 | 0.005 | 2.576 | 3.169 | 2.750 |
+
+**Confidence Interval Interpretation:**
+```
+95% CI: [L, U]
+
+Correct: "I am 95% confident the true parameter lies in [L, U]"
+Incorrect: "There is a 95% chance the parameter lies in [L, U]"
+
+Visualization:
+    L────────────X────────────U
+    ↑            ↑            ↑
+  Lower       Point        Upper
+  Bound      Estimate      Bound
+```
 
 #### When σ is Unknown (t-interval)
 **X̄ ± t_(α/2,df) × (s/√n)**
@@ -258,42 +275,88 @@ Controls the expected proportion of false discoveries among rejected hypotheses.
 #### Holm-Bonferroni
 Step-down procedure that's less conservative than Bonferroni.
 
-## Effect Size
+## Effect Size and Practical Significance
 
-### Importance
-Statistical significance doesn't always imply practical significance.
+### Why Effect Size Matters
 
-### Common Measures
+**Statistical vs Practical Significance:**
 
-#### Cohen's d
-Standardized difference between two means.
-**d = (μ₁ - μ₂) / σ**
+| Sample Size | Effect | p-value | Practical Importance |
+|-------------|--------|---------|---------------------|
+| n = 10,000 | Tiny | p < 0.001 | Statistically significant but meaningless |
+| n = 20 | Large | p = 0.08 | Not significant but potentially important |
 
-**Interpretation**:
-- Small: d = 0.2
-- Medium: d = 0.5
-- Large: d = 0.8
+### Effect Size Measures
 
-#### Pearson's r
-Correlation coefficient as effect size.
+| Measure | Formula | Small | Medium | Large | Use Case |
+|---------|---------|-------|--------|-------|----------|
+| **Cohen's d** | (μ₁ - μ₂) / σ | 0.2 | 0.5 | 0.8 | Two-group comparisons |
+| **Pearson's r** | Correlation coefficient | 0.1 | 0.3 | 0.5 | Associations |
+| **Eta-squared (η²)** | SSB / SST | 0.01 | 0.06 | 0.14 | ANOVA (variance explained) |
+| **Omega-squared (ω²)** | (SSB - (k-1)MSW) / (SST + MSW) | 0.01 | 0.06 | 0.14 | Unbiased η² |
+| **Phi (φ)** | χ² / n | 0.1 | 0.3 | 0.5 | 2×2 contingency tables |
 
-#### Eta-squared (η²)
-Proportion of variance explained in ANOVA.
-**η² = SSB / SST**
+### Interpreting Effect Sizes in Bioinformatics
 
-## Sample Size Calculation
+| Context | Measure | Small Effect | Large Effect |
+|---------|---------|--------------|-------------|
+| **Gene Expression** | Log₂ fold change | ±0.5 | ±2.0 |
+| **GWAS** | Odds ratio | 1.1-1.2 | >2.0 |
+| **Drug Response** | Response rate difference | 5% | 20% |
+| **Survival Analysis** | Hazard ratio | 1.1-1.3 | >2.0 |
 
-### Power Analysis
-Determines appropriate sample size to detect a meaningful effect.
+**Visual Effect Size Comparison:**
+```
+Cohen's d = 0.2 (Small):
+Group 1: ●●●●●●●●●●
+Group 2:   ●●●●●●●●●●  (slight shift)
 
-**Required inputs**:
-- Desired power (typically 0.80 or 0.90)
-- Significance level (α)
-- Effect size
-- Population variance (estimate)
+Cohen's d = 0.8 (Large):
+Group 1: ●●●●●●●●●●
+Group 2:       ●●●●●●●●●●  (clear separation)
+```
 
-### Formula for Comparing Two Means
+## Sample Size and Power Analysis
+
+### Power Analysis Components
+
+| Component | Symbol | Typical Values | Notes |
+|-----------|--------|----------------|-------|
+| **Power** | 1-β | 0.80, 0.90 | Probability of detecting true effect |
+| **Significance Level** | α | 0.05, 0.01 | Type I error rate |
+| **Effect Size** | δ | Varies | Magnitude of difference to detect |
+| **Variance** | σ² | From pilot data | Population variability |
+
+### Sample Size Formulas
+
+#### Two-Sample Comparison
 **n = 2(z_(α/2) + z_β)² × σ² / (μ₁ - μ₂)²**
+
+#### One-Sample t-test
+**n = (z_(α/2) + z_β)² × σ² / (μ - μ₀)²**
+
+#### Proportion Test
+**n = (z_(α/2) + z_β)² × [p₁(1-p₁) + p₂(1-p₂)] / (p₁ - p₂)²**
+
+### Power Analysis Example
+
+**Study Design:** Compare gene expression between cases and controls
+- Desired power: 80%
+- Significance level: 5%
+- Expected difference: 1.5 units
+- Standard deviation: 2.0 units
+
+**Calculation:**
+n = 2(1.96 + 0.84)² × 2² / 1.5² = 2 × 7.84 × 4 / 2.25 = **28 per group**
+
+### Sample Size Table (Two-group t-test, α=0.05)
+
+| Effect Size (d) | Power = 0.80 | Power = 0.90 |
+|-----------------|--------------|---------------|
+| 0.2 (Small) | 393 per group | 526 per group |
+| 0.5 (Medium) | 64 per group | 85 per group |
+| 0.8 (Large) | 26 per group | 34 per group |
+| 1.0 (Very Large) | 17 per group | 22 per group |
 
 ## Bioinformatics Applications
 
