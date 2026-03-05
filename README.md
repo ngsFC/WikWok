@@ -1,6 +1,6 @@
-# WikWok: Statistics and Bioinformatics Wiki
+# WikWok: Statistics, Bioinformatics & Oncology Wiki
 
-A comprehensive wiki covering statistics from fundamentals through advanced applications in bioinformatics, culminating in graph theory and network analysis.
+A comprehensive wiki covering statistics from fundamentals through advanced applications in bioinformatics, graph theory and network analysis, and a dedicated section on pediatric oncology.
 
 ## Contents
 
@@ -20,3 +20,8 @@ A comprehensive wiki covering statistics from fundamentals through advanced appl
 ### Graph Theory and Networks
 8. **[Graph Theory](07-graph-theory.md)** - Fundamental concepts, algorithms, and network analysis methods
 9. **[Bioinformatics Applications](08-bioinformatics-applications.md)** - Real-world applications of statistics and graph theory in biological research
+
+### Pediatric Oncology
+10. **[Pediatric Tumors — Overview](10-pediatric-tumors.md)** - Epidemiology, developmental biology, molecular landscape, cancer predisposition syndromes, and general treatment principles
+    - **[Pediatric Brain Tumors](10a-pediatric-brain-tumors.md)** - WHO 2021 classification, medulloblastoma (WNT/SHH/Group 3/Group 4), DIPG/diffuse midline glioma, low-grade gliomas, ependymoma, AT/RT, craniopharyngioma, ETMR — molecular biology, clinical features, and emerging therapies
+    - **[Pediatric Hematological Tumors](10b-pediatric-hematological-tumors.md)** - Acute lymphoblastic leukemia (B-ALL/T-ALL subtypes), AML, JMML, Hodgkin lymphoma, Non-Hodgkin lymphoma (Burkitt, ALCL, DLBCL) — molecular drivers, treatment protocols, targeted therapy, CAR-T, and MRD monitoring
