@@ -593,7 +593,7 @@ graph LR
 
     MIDOSTAURIN["Midostaurin\n(FLT3 inhibitor)"] --> |"Inhibits"| FLT3_ITD
     QUIZARTINIB["Quizartinib\n(selective FLT3i)"] --> |"Inhibits"| FLT3_ITD
-    GILTERITINIB["Gilteritinib\n(selective FLT3i)"| ] --> |"Inhibits"| FLT3_ITD
+    GILTERITINIB["Gilteritinib\n(selective FLT3i)"] --> |"Inhibits"| FLT3_ITD
 
     style FLT3_ITD fill:#e74c3c,color:#fff
     style MIDOSTAURIN fill:#27ae60,color:#fff
